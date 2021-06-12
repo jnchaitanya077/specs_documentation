@@ -172,6 +172,63 @@ The event_steps file contains the steps that need to be followed for that partic
 <p>
   <strong>Reverse Mapping:</strong> Mapping the details from their format to our database format is called Reverse mapping.
 </p>
+<h2>Spec File</h2>
+<p>
+  As I discussed earlier, we mainly had two types of files. One is event_steps. We discussed how to write the event_steps. Now lets see how to write the actual spec file.
+</p>
+<h4>Basic Structutre of specs</h4>
+<p>
+  Actual spec file will contain mainly eight keys
+  <ol>
+    <li>name</li>
+    <li>event_type</li>
+    <li>description</li>
+    <li>parameters</li>
+    <li>outputs</li>
+     <li>response</li>
+     <li>request_configuration</li>
+     <li>request</li>
+   </ol>
+ <pre>
+  <code>
+  {
+ "data": {
+   "name":"name of the spec file",
+   "event_type":"marketplace.method.marketplace_name.event_type",
+   "description":"small description about the spec",
+   "parameters":{},
+   "outputs":{},
+   "response":{},
+   "request_configuration":{},
+   "request":{}
+ }
+}
+  </code>
+</pre>
+<p/>
+<h2>Field Descriptions</h2>
+<p>
+  <strong>name:</strong>  We specify the name of the spec 
+
+event_type : Here we have two types of events 
+api_call
+data_mapping
+  <strong>api_call event</strong> is nothing but making an api request and data_mapping event says that we are writing spec for mapping events like forward mapping or reverse mapping.
+
+  <strong>description:</strong> We write a small description about the spec.
+
+  <strong>parameters:</strong> In parameters we either refer to the previous event data or the data that is needed to run that particular event.
+
+  <strong>outputs:</strong> In the outputs we have two keys: success and error. We save the data of success or error based on the response key conditions. 
+
+  <strong>response:</strong> response will have conditions to check whether the request is successful or not. If the response is successful then it will save whatever data in outputs -> success or else it will save the output error.
+
+  <strong>request_configuration:</strong>  request_configuration will have different types of request like single_request, paginated_request..etc.
+
+  <strong>request:</strong>  the request contains all the host, url endpoint, api request method, protocol and also headers, params and body information.
+</p>
+
+
 
   
 
