@@ -158,11 +158,11 @@ The event_steps file contains the steps that need to be followed for that partic
 </pre>
 
 <p>
-  Generally, we integrate different market places to vdezi platform and the client make use of our platform to get consolidate view of his products and orders for his different market places. Each market place will have a different schema for storing the information like we can see in the above example. For shopify we had an id and for bigcommerce the same id is denoted as product_id. So, when storing this information in our database we need to have a generalized schema. We created a generalized schema and we map ( marketplace) details to our schema. Mapping the response of the request to our database format is called reverse mapping. 
+  Generally, we integrate different market places to vdezi platform and the client make use of our platform to get consolidated view of his products and orders for his different market places. Each market place will have a different schema for storing the information like we can see in the above example. For shopify we had an id and for bigcommerce the same id is denoted as product_id. So, when storing this information in our database we need to have a generalized schema. We created a generalized schema and we map ( marketplace) details to our schema. Mapping the response of the request to our database format is called reverse mapping. 
 </p>
 
 <p>
- Sometimes we also do forward mapping. We call it forward mapping when we map the details for our database to their(shopify, Bigcommerce..etc) format. Generally we do this forward mapping before making a request. We map the details to a particular marketplace payload and then send the request.
+ Sometimes we also do forward mapping. We call it forward mapping when we map the details from our database format to their(shopify, Bigcommerce..etc) format. Generally we do this forward mapping before making a request. We map the details to a particular marketplace payload and then send the request.
 </p>
 
 <p>
