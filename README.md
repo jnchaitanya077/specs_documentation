@@ -69,6 +69,110 @@ The event_steps file contains the steps that need to be followed for that partic
 </p>
 
 <h4>Example - 1</h4> 
+<p>Let's write the event steps for get products in a shopify store.</p>
+<p>Steps</p>
+  <ol>
+  <li>Get shopify api keys</li>
+  <li>Make a get request</li>
+  <li>Reverse Mapping</li>
+  <li>Update to DB</li>
+  </ol>
+<pre>
+  <code>
+    {
+    "data": {
+        "title": "get products from shopify webstore",
+        "description": "",
+        "name": "products.get.shopify",
+        "start_event": "webstore.get.shopify.get_api_keys",
+        "steps": {
+            "webstore.get.shopify.get_api_keys":{
+                "success": {
+                    "event_key": "webstore.get.shopify.products"
+                },
+                "error": {
+                    "event_key": "notification.error_message"
+                }
+            },
+            "webstore.get.shopify.products":{
+                "success": {
+                    "event_key": "data_transformer.reverse_mapping.shopify.products_mapping"
+                },
+                "error": {
+                    "event_key": "notification.error_message"
+                }
+            },
+            "data_transformer.reverse_mapping.shopify.products_mapping" :{
+                "success": {
+                    "event_key": "products.post.vdezi.update_shopify_products"
+                },
+                "error": {
+                    "event_key": "notification.error_message"
+                }
+            },
+            "products.post.vdezi.update_shopify_products" : {
+                "success": {
+                    "event_key": ""
+                },
+                "error": {
+                    "event_key": "notification.error_message"
+                }
+            }
+        }
+    }
+}
+ </code>
+</pre>
+<p>
+  So in the above steps we saw a new term called Reverse mapping. What is it? What is reverse mapping and what are we doing in reverse mapping? 
+</p>
+<code>BigCommerce</code>
+<pre>
+  <code>
+  { 
+    "id": 174, 
+    "name": "1L Le Parfait Jar", 
+    "type": "physical",
+     "sku": "",
+     "weight": 1,
+     "width": 0,
+     "depth": 0,
+  }
+  </code>
+</pre>
 
+<code>Shopify</code>
+<pre>
+  <code>
+   {
+        "product_id": 632910392,
+        "position": 2,
+        "created_at": "2021-06-09T20:43:00-04:00",
+        "updated_at": "2021-06-09T20:43:00-04:00",
+        "alt": null,
+        "width": 123,
+        "height": 456,
+        "src": "https://cdn.shopify.com/s/files/1/0006/9093/3842/products/ipod-nano-2.png?v=1623285780",
+      }
+  </code>
+</pre>
+
+<p>
+  Generally, we integrate different market places to vdezi platform and the client make use of our platform to get consolidate view of his products and orders for his different market places. Each market place will have a different schema for storing the information like we can see in the above example. For shopify we had an id and for bigcommerce the same id is denoted as product_id. So, when storing this information in our database we need to have a generalized schema. We created a generalized schema and we map ( marketplace) details to our schema. Mapping the response of the request to our database format is called reverse mapping. 
+</p>
+
+<p>
+ Sometimes we also do forward mapping. We call it forward mapping when we map the details for our database to their(shopify, Bigcommerce..etc) format. Generally we do this forward mapping before making a request. We map the details to a particular marketplace payload and then send the request.
+</p>
+
+<p>
+  <strong>Forward Mapping:</strong> Mapping the details from our database format to their format is called Forward mapping.
+</p>
+
+<p>
+  <strong>Reverse Mapping:</strong> Mapping the details from their format to our database format is called Reverse mapping.
+</p>
+
+  
 
   
