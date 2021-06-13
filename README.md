@@ -214,7 +214,7 @@ The event_steps file contains the steps that need to be followed for that partic
   <ol>
     <li>api_call</li>
     <li>data_mapping</li>
-
+</ol>
   api_call event is nothing but making an api request and data_mapping event says that we are writing spec for mapping events like forward mapping or reverse mapping.
 
   <strong>description:</strong> We write a small description about the spec.
