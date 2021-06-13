@@ -158,7 +158,7 @@ The event_steps file contains the steps that need to be followed for that partic
 </pre>
 
 <p>
-  Generally, we integrate different market places to vdezi platform and the client make use of our platform to get consolidated view of his products and orders for his different market places. Each market place will have a different schema for storing the information like we can see in the above example. For shopify we had an id and for bigcommerce the same id is denoted as product_id. So, when storing this information in our database we need to have a generalized schema. We created a generalized schema and we map ( marketplace) details to our schema. Mapping the response of the request to our database format is called reverse mapping. 
+  Generally, we integrate different market places to vdezi platform and the client make use of our platform to get consolidated view of his products and orders for his different market places. Each market place will have a different schema for storing the information like we can see in the above example. For BigCommerce we had an id and for Shopify the same id is denoted as product_id. So, when storing this information in our database we need to have a generalized schema. We created a generalized schema and we map ( marketplace) details to our schema. Mapping the response of the request to our database format is called reverse mapping. 
 </p>
 
 <p>
@@ -210,10 +210,12 @@ The event_steps file contains the steps that need to be followed for that partic
 <p>
   <strong>name:</strong>  We specify the name of the spec 
 
-event_type : Here we have two types of events 
-api_call
-data_mapping
-  <strong>api_call event</strong> is nothing but making an api request and data_mapping event says that we are writing spec for mapping events like forward mapping or reverse mapping.
+  <strong>event_type :</strong> Here we have two types of events
+  <ol>
+    <li>api_call</li>
+    <li>data_mapping</li>
+
+  api_call event is nothing but making an api request and data_mapping event says that we are writing spec for mapping events like forward mapping or reverse mapping.
 
   <strong>description:</strong> We write a small description about the spec.
 
