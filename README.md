@@ -23,6 +23,7 @@ So the steps we need to follow is:
   </ol>
 
 So these are the sequence of steps that we need to follow to successfully creating an order in the marketplace. So every time when you integrate the new market place we need to follow the more or less same sequence of steps for creating an order.
+
 </p>
 
 <h2>Automation of API request process</h2>
@@ -142,6 +143,7 @@ The event_steps file contains the steps that need to be followed for that partic
 </pre>
 
 <code>Shopify</code>
+
 <pre>
   <code>
    {
@@ -205,33 +207,39 @@ The event_steps file contains the steps that need to be followed for that partic
 }
   </code>
 </pre>
-<p/>
+</p>
 <h2>Field Descriptions</h2>
 <p>
-  <strong>name:</strong>  We specify the name of the spec 
+  <strong>name:</strong>  We specify the name of the spec
 
-  <strong>event_type :</strong> Here we have two types of events
+<strong>event_type :</strong> Here we have two types of events
+
   <ol>
     <li>api_call</li>
     <li>data_mapping</li>
 </ol>
   api_call event is nothing but making an api request and data_mapping event says that we are writing spec for mapping events like forward mapping or reverse mapping.
 
-  <strong>description:</strong> We write a small description about the spec.
+<strong>description:</strong> We write a small description about the spec.
 
-  <strong>parameters:</strong> In parameters we either refer to the previous event data or the data that is needed to run that particular event.
+<strong>parameters:</strong> In parameters we either refer to the previous event data or the data that is needed to run that particular event.
 
-  <strong>outputs:</strong> In the outputs we have two keys: success and error. We save the data of success or error based on the response key conditions. 
+<strong>outputs:</strong> In the outputs we have two keys: success and error. We save the data of success or error based on the response key conditions.
 
-  <strong>response:</strong> response will have conditions to check whether the request is successful or not. If the response is successful then it will save whatever data in outputs -> success or else it will save the output error.
+<strong>response:</strong> response will have conditions to check whether the request is successful or not. If the response is successful then it will save whatever data in outputs -> success or else it will save the output error.
 
-  <strong>request_configuration:</strong>  request_configuration will have different types of request like single_request, paginated_request..etc.
+<strong>request_configuration:</strong> request_configuration will have different types of request like single_request, paginated_request..etc.
 
-  <strong>request:</strong>  the request contains all the host, url endpoint, api request method, protocol and also headers, params and body information.
+<strong>request:</strong> the request contains all the host, url endpoint, api request method, protocol and also headers, params and body information.
+
 </p>
 
+<p>Before going further we need to know about other files. I.e config_data.json so, let’s see what this config_data is all about.</p>
 
-
-  
-
-  
+<section>
+<h2>Config_data</h2>
+<p>
+Sometimes for making requests we need some pieces of data which are private. Like api keys, access tokens not only those we also use different servers for different environments. For suppose, In testing we might use a different host name and on production we use different host and also AWS S3 bucket info all this information is stored in the config_data file. So, when making any request if we need that information we refer to that config file and get that information.
+<img src="" alt="config_data file img"/>
+</p>
+</section>
